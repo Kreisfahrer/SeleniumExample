@@ -46,14 +46,22 @@ public class TabsTest {
 //        }
         //System.out.println(driver.getTitle());
         //driver.switchTo().frame(driver.findElement(By.id("iframeResult")));
-        Thread.sleep(4000);
-        WebElement div = driver.findElement(By.id("columns-full"));
-        List<WebElement> dragables = div.findElements(By.tagName("div"));
-        Actions actions = new Actions(driver);
-        actions.dragAndDrop(dragables.get(0), dragables.get(1)).build().perform();
-        actions.dragAndDrop(dragables.get(1), dragables.get(2)).build().perform();
-        actions.dragAndDrop(dragables.get(2), dragables.get(3)).build().perform();
-        actions.moveToElement(dragables.get(0)).clickAndHold().moveToElement(dragables.get(3)).perform();
-        Thread.sleep(5000);
+//        Thread.sleep(4000);
+//        WebElement div = driver.findElement(By.id("columns-full"));
+//        List<WebElement> dragables = div.findElements(By.cssSelector("div.column"));
+//        Actions actions = new Actions(driver);
+//        dragables.get(0).click();
+//        actions.clickAndHold(dragables.get(0)).build().perform();
+//        actions.moveToElement(dragables.get(3)).build().perform();
+//        actions.release().build().perform();
+//        actions.dragAndDrop(dragables.get(0), dragables.get(1)).build().perform();
+//        actions.dragAndDrop(dragables.get(1), dragables.get(2)).build().perform();
+//        actions.dragAndDrop(dragables.get(2), dragables.get(3)).build().perform();
+//        actions.moveToElement(dragables.get(0)).clickAndHold().moveToElement(dragables.get(3)).perform();
+//        actions.moveToElement(dragables.get(0)).clickAndHold().perform();
+//        actions.moveToElement(dragables.get(3)).perform();
+//        actions.moveByOffset(0, 5).perform();
+//        actions.release().perform();
+//        Thread.sleep(5000);
     }
 }
