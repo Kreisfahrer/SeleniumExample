@@ -1,8 +1,6 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -10,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -21,8 +21,8 @@ public class ElementsTest {
     private WebDriver driver;
 
     @BeforeMethod
-    public void setup() throws InterruptedException {
-        driver = new ChromeDriver();
+    public void setup() throws InterruptedException, IOException {
+        driver = new PhantomJSDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
@@ -37,7 +37,9 @@ public class ElementsTest {
     }
 
     @Test
-    public void checkboxTest() throws InterruptedException {
+    public void checkboxTest() throws InterruptedException, IOException {
+        File screen = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screen, new File("D:/screen.png"));
         WebElement ref = driver.findElement(By.linkText("Checkboxes"));
         ref.click();
         Thread.sleep(3000);
